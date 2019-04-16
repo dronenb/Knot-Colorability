@@ -1,8 +1,10 @@
 #! /usr/bin/env python3
 import os
 import sys
+import re
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath( __file__ )), 'manim'))
 from big_ol_pile_of_manim_imports import *
+text_searcher = re.compile('(\d+)_(\d+)')
 class Knot(SVGMobject):
 	def __init__(self, mode="Unknot", **kwargs):
 		try:
@@ -11,38 +13,50 @@ class Knot(SVGMobject):
 		except:
 			warnings.warn("No SVG file for knot: %s" % mode)
 			exit()
+		text = mode
+		result = text_searcher.findall(text)
+		if len(result) > 0:
+			text = result[0][0] + '$_{' + result[0][1] + '}$'
+		self.textMobject = TextMobject(text)
+	def move_to (self, position):
+		super().move_to(position)
+		self.textMobject.move_to(position + DOWN * 1.45)
 class KnotTable(Scene):
 	def construct(self):
 		title_text = TextMobject("Some Standard Knots")
 		title_text.to_edge(UP)
 		self.play(FadeIn(title_text))
-#		unknot		= Knot()
-		knot_3_1	= Knot("3_1")
-		knot_3_1.move_to(LEFT * 5 + UP)
-		knot_4_1	= Knot("4_1")
-		knot_4_1.move_to(LEFT * 2.5 + UP)
-		knot_5_1	= Knot("5_1")
-		knot_5_1.move_to(UP)
-		knot_5_2	= Knot("5_2")
-		knot_5_2.move_to(RIGHT * 2.5 + UP)
-		knot_6_1	= Knot("6_1")
-		knot_6_1.move_to(UP + RIGHT * 5)
-		knot_6_2	= Knot("6_2")
-		knot_6_2.move_to(DOWN * 2 + LEFT * 5)
-		knot_6_3	= Knot("6_3")
-		knot_6_3.move_to(DOWN * 2 + LEFT * 2.5)
-		knot_7_1	= Knot("7_1")
-		knot_7_1.move_to(DOWN * 2)
-		knot_7_2	= Knot("7_2")
-		knot_7_2.move_to(DOWN * 2 + RIGHT * 2.5)
-		self.play(
-			FadeIn(knot_3_1),
-			FadeIn(knot_4_1),
-			FadeIn(knot_5_1),
-			FadeIn(knot_5_2),
-			FadeIn(knot_6_1),
-			FadeIn(knot_6_2),
-			FadeIn(knot_6_3),
-			FadeIn(knot_7_1),
-			FadeIn(knot_7_2),
-		)
+		knots = []
+		unknot		= Knot()
+		unknot.move_to(LEFT * 5 + UP)
+		knots.append(unknot)
+		k_3_1	= Knot("3_1")
+		k_3_1.move_to(LEFT * 2.5 + UP)
+		knots.append(k_3_1)
+		k_4_1	= Knot("4_1")
+		k_4_1.move_to(UP)
+		knots.append(k_4_1)
+		k_5_1	= Knot("5_1")
+		k_5_1.move_to(RIGHT * 2.5 + UP)
+		knots.append(k_5_1)
+		k_5_2	= Knot("5_2")
+		k_5_2.move_to(UP + RIGHT * 5)
+		knots.append(k_5_2)
+		k_6_1	= Knot("6_1")
+		k_6_1.move_to(DOWN * 2 + LEFT * 5)
+		knots.append(k_6_1)
+		k_6_2	= Knot("6_2")
+		k_6_2.move_to(DOWN * 2 + LEFT * 2.5)
+		knots.append(k_6_2)
+		k_6_3	= Knot("6_3")
+		k_6_3.move_to(DOWN * 2)
+		knots.append(k_6_3)
+		k_7_1	= Knot("7_1")
+		k_7_1.move_to(DOWN * 2 + RIGHT * 2.5)
+		knots.append(k_7_1)
+		k_7_2	= Knot("7_2")
+		k_7_2.move_to(DOWN * 2 + RIGHT * 5)
+		knots.append(k_7_2)
+		for knot in knots:
+			self.play(DrawBorderThenFill(knot))
+			self.play(FadeIn(knot.textMobject))
