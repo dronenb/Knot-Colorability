@@ -30,6 +30,7 @@ class ColorTrefoil(Scene):
 class AULogo(Scene):
 	def construct(self):
 		au_logo = SVGMobject(os.path.join(os.path.dirname(os.path.abspath( __file__ )), "svg_files", "au_math_logo.svg"))
+		au_logo.submobjects[0].set_fill('#0067AA', opacity = 1)
 		self.play(DrawBorderThenFill(au_logo))
 class KnotTable(Scene):
 	def construct(self):
