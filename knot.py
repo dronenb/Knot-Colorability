@@ -18,9 +18,19 @@ class Knot(SVGMobject):
 		if len(result) > 0:
 			text = result[0][0] + '$_{' + result[0][1] + '}$'
 		self.textMobject = TextMobject(text)
-	def move_to (self, position):
+		self.textMobject.move_to(DOWN * 1.45)
+	def move_to(self, position):
 		super().move_to(position)
 		self.textMobject.move_to(position + DOWN * 1.45)
+class ColorTrefoil(Scene):
+	def construct(self):
+		trefoil = Knot("3_1")
+		self.play(FadeIn(trefoil))
+		self.play(FadeIn(trefoil.textMobject))
+class AULogo(Scene):
+	def construct(self):
+		au_logo = SVGMobject(os.path.join(os.path.dirname(os.path.abspath( __file__ )), "svg_files", "au_math_logo.svg"))
+		self.play(DrawBorderThenFill(au_logo))
 class KnotTable(Scene):
 	def construct(self):
 		title_text = TextMobject("Some Standard Knots")
@@ -57,6 +67,8 @@ class KnotTable(Scene):
 		k_7_2	= Knot("7_2")
 		k_7_2.move_to(DOWN * 2 + RIGHT * 5)
 		knots.append(k_7_2)
-		for knot in knots:
-			self.play(DrawBorderThenFill(knot))
-			self.play(FadeIn(knot.textMobject))
+		self.play(*[DrawBorderThenFill(knot) for knot in knots])
+		self.play(*[FadeIn(knot.textMobject) for knot in knots])
+		# for knot in knots:
+			# self.play(DrawBorderThenFill(knot))
+			# self.play(FadeIn(knot.textMobject))
