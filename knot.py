@@ -13,6 +13,7 @@ class Knot(SVGMobject):
 		except:
 			warnings.warn("No SVG file for knot: %s" % mode)
 			exit()
+		self.mode = mode
 		text = mode
 		result = text_searcher.findall(text)
 		if len(result) > 0:
@@ -22,11 +23,28 @@ class Knot(SVGMobject):
 	def move_to(self, position):
 		super().move_to(position)
 		self.textMobject.move_to(position + DOWN * 1.45)
+	def showColoringAndReturnNew(self, scene, colors):
+		if len(self.submobjects) != len(colors):
+			print("Not enough colors!")
+			exit()
+		else:
+			previous_knot = self
+			for i in range(0, len(colors)):
+				new_knot = copy.deepcopy(previous_knot)
+				new_knot.submobjects[i].set_fill(colors[i], opacity=1)
+				scene.play(FadeIn(new_knot))
+				scene.remove(previous_knot)
+				previous_knot = new_knot
+			previous_knot.textMobject = self.textMobject
+			return previous_knot
 class ColorTrefoil(Scene):
 	def construct(self):
-		trefoil = Knot("3_1")
-		self.play(FadeIn(trefoil))
-		self.play(FadeIn(trefoil.textMobject))
+		knot = Knot("5_1")
+		knot.move_to(LEFT * 3)
+		self.play(FadeIn(knot))
+		self.play(FadeIn(knot.textMobject))
+		knot = knot.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, '#ff05d5', '#66ff00'])
+		self.play(FadeOut(knot), FadeOut(knot.textMobject))
 class AULogo(Scene):
 	def construct(self):
 		au_logo = SVGMobject(os.path.join(os.path.dirname(os.path.abspath( __file__ )), "svg_files", "au_math_logo.svg"))
@@ -38,7 +56,7 @@ class KnotTable(Scene):
 		title_text.to_edge(UP)
 		self.play(FadeIn(title_text))
 		knots = []
-		unknot		= Knot()
+		unknot	= Knot()
 		unknot.move_to(LEFT * 5 + UP)
 		knots.append(unknot)
 		k_3_1	= Knot("3_1")
