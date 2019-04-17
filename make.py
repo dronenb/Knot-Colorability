@@ -10,6 +10,7 @@ scenes = [
 	'AULogo',
 	'KnotColorExample',
 	'KnotCrossingsExample',
+	'KnotBasics',
 ]
 
 # Find the current path, then combine that with the manim folder and the manim.py executable

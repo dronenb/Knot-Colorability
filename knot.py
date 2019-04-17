@@ -119,12 +119,3 @@ class KnotScene(Scene):
 				super().remove(to_remove.submobjects[i])
 		else:
 			super().remove(to_remove)
-
-class KnotCrossingsExample(KnotScene):
-	def construct(self):
-		knot = Knot("5_1")
-		knot.move_to(LEFT * 3)
-		self.play(*DrawKnot(knot))
-		self.play(FadeIn(knot.textMobject))
-		knot = knot.circleCrossingsAndReturnNew(self)
-		self.play(FadeOut(knot), FadeOut(knot.textMobject))
