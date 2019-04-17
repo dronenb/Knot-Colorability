@@ -40,6 +40,7 @@ class Knot(SVGMobject):
 			self.textMobject = TexMobject(r"%s" % result[0][0], r"_{%s}" % result[0][1])
 			text = result[0][0] + '$_{' + result[0][1] + '}$'
 			self.crossings = int(result[0][0])
+			self.index = int(result[0][1])
 		else:
 			self.textMobject = TextMobject(text)
 			self.crossings = 0
