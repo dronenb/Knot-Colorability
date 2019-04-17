@@ -114,6 +114,9 @@ class AULogo(Scene):
 		# Draw the logo
 		self.play(DrawBorderThenFill(au_logo))
 
+		# Hold on this frame
+		self.wait()
+
 # A scene that shows 10 different knots
 class KnotTable(Scene):
 	def construct(self):
