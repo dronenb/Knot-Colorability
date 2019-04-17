@@ -1,4 +1,7 @@
-#! /usr/bin/env python3
+"""
+Knot Notation definitions
+"""
+
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath( __file__ )), '..'))
