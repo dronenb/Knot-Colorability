@@ -230,3 +230,30 @@ class KnotTable(Scene):
 		# for knot in knots:
 			# self.play(DrawBorderThenFill(knot))
 			# self.play(FadeIn(knot.textMobject))
+
+class KnotBasics(Scene):
+	"""
+	Introduce the basic ideas of knots:
+		What the numbering means
+		...
+	"""
+	def construct(self):
+		# The knot to introduce
+		knot = Knot("3_1")
+		# Begin with knot notation
+		title = TextMobject("Knot Notation")
+		title.to_edge(UP)
+
+		# Draw knot & title
+		self.play(FadeIn(title))
+		self.play(DrawBorderThenFill(knot))
+		self.play(FadeIn(knot.textMobject))
+
+		"""
+		TODO:
+		Clear all except "3_1" text
+			Move to top of screen
+		Fade in text (briefly) explaining notation
+		Move on to KnotTable
+		...
+		"""
