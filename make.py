@@ -6,11 +6,11 @@ import sys
 
 # List of scenes
 scenes = [
-	'KnotTable',
-	'AULogo',
-	'KnotColorExample',
-	'KnotCrossingsExample',
-	'KnotBasics',
+	# 'KnotTable',
+	# 'AULogo',
+	# 'KnotColorExample',
+	# 'KnotCrossingsExample',
+	'KnotNotation',
 ]
 
 # Find the current path, then combine that with the manim folder and the manim.py executable

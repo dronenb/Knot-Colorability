@@ -1,3 +1,5 @@
 Dr. Bosman's Knot Theory Colorability Video - https://www.youtube.com/watch?v=fwcvmo0y_SI
 
 Manim tutorial w/ examples - https://talkingphysics.wordpress.com/2019/01/08/getting-started-animating-with-manim-and-python-3-7/
+
+Knot Book - http://math.harvard.edu/~ctm/home/text/books/adams/knot_book/knot_book.pdf

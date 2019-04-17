@@ -29,3 +29,4 @@ class KnotBasics(KnotScene):
 		Fade in text (briefly) explaining notation
 		Move on to KnotTable
 		"""
+		self.play(ApplyMethod(knot.shift, 5 * LEFT), ApplyMethod(knot.textMobject.shift, 5*LEFT))

@@ -19,6 +19,7 @@ class KnotNotation(KnotScene):
 
         sup_l1 = TextMobject("Crossing Number: ")
         sup_l1.set_color(BLUE)
+        self.play(ApplyMethod(basic_knot.textMobject.set_color_by_tex, str(basic_knot.crossings), BLUE))
 
         sup_l2 = TextMobject("Minimum number of crossings")
         sup_l2.next_to(sup_l1, DOWN)

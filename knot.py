@@ -37,12 +37,12 @@ class Knot(SVGMobject):
 		# Check if the regex found any matches
 		if len(result) > 0:
 			# Replace the text variable with the first number, then the second number in subscript (via LaTex)
+			self.textMobject = TexMobject(r"%s" % result[0][0], r"_{%s}" % result[0][1])
 			text = result[0][0] + '$_{' + result[0][1] + '}$'
 			self.crossings = int(result[0][0])
 		else:
+			self.textMobject = TextMobject(text)
 			self.crossings = 0
-		# Create a new TextMobject for this object
-		self.textMobject = TextMobject(text)
 
 		# Make the circles around the crossings invisible
 		for i in range(0, self.crossings):
