@@ -6,7 +6,10 @@ import sys
 
 # List of scenes
 scenes = [
+	'KnotTable',
 	'AULogo',
+	'KnotColorExample',
+	'KnotCrossingsExample',
 ]
 
 # Find the current path, then combine that with the manim folder and the manim.py executable
@@ -14,8 +17,9 @@ manim_path = os.path.join(os.path.dirname(os.path.abspath( __file__ )), 'manim',
 
 # Render each of the scenes
 for scene in scenes:
+	scene_path = os.path.join(os.path.dirname(os.path.abspath( __file__ )), 'scenes', scene + '.py')
 	# Create the command
-	command = "python3 %s %s %s" % (manim_path, "knot.py", scene)
+	command = "python3 %s %s %s" % (manim_path, scene_path, scene)
 
 	# Check if any arguments were provided on the command line
 	if len(sys.argv) > 1:

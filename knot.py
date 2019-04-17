@@ -38,8 +38,16 @@ class Knot(SVGMobject):
 		if len(result) > 0:
 			# Replace the text variable with the first number, then the second number in subscript (via LaTex)
 			text = result[0][0] + '$_{' + result[0][1] + '}$'
+			self.crossings = int(result[0][0])
+		else:
+			self.crossings = 0
 		# Create a new TextMobject for this object
 		self.textMobject = TextMobject(text)
+
+		# Make the circles around the crossings invisible
+		for i in range(0, self.crossings):
+			self.submobjects[self.crossings + i].set_stroke(width=0)
+			self.submobjects[self.crossings + i].set_fill(opacity=0)
 
 		# Move this object to right below the knot object
 		self.textMobject.move_to(DOWN * 1.45)
@@ -47,10 +55,26 @@ class Knot(SVGMobject):
 	def move_to(self, position):
 		super().move_to(position)
 		self.textMobject.move_to(position + DOWN * 1.45)
+	# Circle each crossing
+	def circleCrossingsAndReturnNew(self, scene):
+		if self.crossings == 0:
+			return self
+		else:
+			previous_knot = self
+			for i in range(self.crossings, self.crossings * 2):
+				new_knot = copy.deepcopy(previous_knot)
+				new_knot.submobjects[i].set_stroke(width=3)
+				# new_knot.submobjects[i].set_fill(opacity=50)
+				scene.play(FadeIn(new_knot))
+				scene.remove(previous_knot)
+				previous_knot = new_knot
+			previous_knot.textMobject = self.textMobject
+			return previous_knot
+
 	# Color the knot
 	def showColoringAndReturnNew(self, scene, colors):
 		# Make sure we have enough colors for the components of this knot
-		if len(self.submobjects) != len(colors):
+		if len(self.submobjects) <= len(colors):
 			print("Not enough colors!")
 			exit()
 		# If so, continue
@@ -59,7 +83,7 @@ class Knot(SVGMobject):
 			previous_knot = self
 
 			# Color the components of the knot by copying the original knot, coloring a component, then repeating until all the components are colored
-			for i in range(0, len(colors)):
+			for i in range(0, self.crossings):
 				# Create a copy of the original knot
 				new_knot = copy.deepcopy(previous_knot)
 
@@ -80,153 +104,27 @@ class Knot(SVGMobject):
 
 			# Return the new knot
 			return previous_knot
+def DrawKnot(knot):
+	animations = []
+	if knot.crossings == 0:
+		animations.append(DrawBorderThenFill(knot.submobjects[0]))
+	else:
+		for i in range(0, knot.crossings):
+			animations.append(DrawBorderThenFill(knot.submobjects[i]))
+	return animations
+class KnotScene(Scene):
+	def remove(self, to_remove):
+		if isinstance(to_remove, Knot):
+			for i in range(0, len(to_remove.submobjects)):
+				super().remove(to_remove.submobjects[i])
+		else:
+			super().remove(to_remove)
 
-# An example of how to color a knot
-class KnotColorExample(Scene):
+class KnotCrossingsExample(KnotScene):
 	def construct(self):
-		# Create a new knot
 		knot = Knot("5_1")
-
-		# Move the knot (for testing, to make sure the knot can be colored properly when not in the original position)
 		knot.move_to(LEFT * 3)
-
-		# Draw the knot in the scene
-		self.play(DrawBorderThenFill(knot))
-
-		# Fade the text of the knot into the scene
+		self.play(*DrawKnot(knot))
 		self.play(FadeIn(knot.textMobject))
-
-		# Color the knot, and set the knot variable equal to the new one
-		knot = knot.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, '#ff05d5', '#66ff00'])
-
-		# Play the fading out of the new knot
+		knot = knot.circleCrossingsAndReturnNew(self)
 		self.play(FadeOut(knot), FadeOut(knot.textMobject))
-
-# A class that draws the AU logo (making sure to color the flame the proper color, as per my color picker)
-class AULogo(Scene):
-	def construct(self):
-		# Open the logo file (not checked into Git for copyright reasons...)
-		au_logo = SVGMobject(os.path.join(os.path.dirname(os.path.abspath( __file__ )), "svg_files", "au_math_logo.svg"))
-
-		# Color the logo blue
-		au_logo.submobjects[0].set_fill('#0067AA', opacity = 1)
-
-		# Draw the logo
-		self.play(DrawBorderThenFill(au_logo))
-
-		# Hold on this frame
-		self.wait()
-
-# A scene that shows 10 different knots
-class KnotTable(Scene):
-	def construct(self):
-		# Create a title text
-		title_text = TextMobject("Some Standard Knots")
-
-		# Align the text to the top
-		title_text.to_edge(UP)
-
-		# Fade the title text in
-		self.play(FadeIn(title_text))
-
-		# Create an array to store the knots
-		knots = []
-
-		# Create an unknot (the default)
-		unknot	= Knot()
-
-		# Move the knot up and left
-		unknot.move_to(LEFT * 5 + UP)
-
-		# Add this knot to the array
-		knots.append(unknot)
-
-		# Create knot 3_1
-		k_3_1	= Knot("3_1")
-
-		# Move it up and left
-		k_3_1.move_to(LEFT * 2.5 + UP)
-
-		# Add this knot to the array
-		knots.append(k_3_1)
-
-		# Create knot 4_1
-		k_4_1	= Knot("4_1")
-
-		# Shift the knot up
-		k_4_1.move_to(UP)
-
-		# Add the knot to the array
-		knots.append(k_4_1)
-
-		# Create knot 5_1
-		k_5_1	= Knot("5_1")
-
-		# Move it up and right
-		k_5_1.move_to(RIGHT * 2.5 + UP)
-
-		# Add the knot to the array
-		knots.append(k_5_1)
-
-		# Create knot 5_2
-		k_5_2	= Knot("5_2")
-
-		# Move it up and right
-		k_5_2.move_to(UP + RIGHT * 5)
-
-		# Add the knot to the array
-		knots.append(k_5_2)
-
-		# Create knot 6_1
-		k_6_1	= Knot("6_1")
-
-		# Move it down and left
-		k_6_1.move_to(DOWN * 2 + LEFT * 5)
-
-		# Add the knot to the array
-		knots.append(k_6_1)
-
-		# Create knot 6_2
-		k_6_2	= Knot("6_2")
-
-		# Move it down and left
-		k_6_2.move_to(DOWN * 2 + LEFT * 2.5)
-
-		# Add the knot to the array
-		knots.append(k_6_2)
-
-		# Create knot 6_3
-		k_6_3	= Knot("6_3")
-
-		# Move it down
-		k_6_3.move_to(DOWN * 2)
-
-		# Add the knot to the array
-		knots.append(k_6_3)
-
-		# Create knot 7_1
-		k_7_1	= Knot("7_1")
-
-		# Move it down and right
-		k_7_1.move_to(DOWN * 2 + RIGHT * 2.5)
-
-		# Add the knot to the array
-		knots.append(k_7_1)
-
-		# Create knot 7_2
-		k_7_2	= Knot("7_2")
-
-		# Move it down and right
-		k_7_2.move_to(DOWN * 2 + RIGHT * 5)
-
-		# Add the knot to the array
-		knots.append(k_7_2)
-
-		# Draw the borders for all of the knots all at once
-		self.play(*[DrawBorderThenFill(knot) for knot in knots])
-
-		# Fade the titles for all of the knots in all at once
-		self.play(*[FadeIn(knot.textMobject) for knot in knots])
-		# for knot in knots:
-			# self.play(DrawBorderThenFill(knot))
-			# self.play(FadeIn(knot.textMobject))
