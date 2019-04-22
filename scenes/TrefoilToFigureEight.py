@@ -1,14 +1,10 @@
 """
 Telling two knots apart by their crossing number
-
-TODO:
--Draw the crossing circles on each one to show the change?
 """
 
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath( __file__ )), '..'))
-
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 from knot import *
 
 class TrefoilToFigureEight(KnotScene):
