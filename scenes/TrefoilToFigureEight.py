@@ -40,4 +40,5 @@ class TrefoilToFigureEight(KnotScene):
         self.play(Transform(trefoil_text, fig_8_text))
         fig_8 = fig_8.circleCrossingsAndReturnNew(self)
         self.play(Transform(trefoil_text_2, fig_8_text_2))
-        
+
+        self.play(FadeOut(VGroup(*self.get_mobjects())))
