@@ -18,3 +18,12 @@ class AULogo(KnotScene):
 
 		# Hold on this frame
 		self.wait()
+		title = TextMobject("Introduction to Knots \& Invariants")
+
+		title.scale(1.5)
+
+		# self.play(Transform(au_logo, title))
+		self.play(FadeOut(au_logo), FadeIn(title))
+		self.wait()
+		self.play(FadeOut(VGroup(*self.get_mobjects())))
+		self.wait()
