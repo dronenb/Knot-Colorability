@@ -24,7 +24,7 @@ class KnotNotation(KnotScene):
         # "superscript" explanation
         sup_l1 = TextMobject("Crossing Number: ")
         sup_l1.set_color(BLUE)
-        sup_l1.shift(UP * 1.5)
+        sup_l1.shift(UP * 0.80)
         self.play(ApplyMethod(basic_knot.textMobject.set_color_by_tex, str(basic_knot.crossings), BLUE))
 
         sup_l2 = TextMobject("Minimum number of crossings")
@@ -41,7 +41,7 @@ class KnotNotation(KnotScene):
         # subscript explanation
         sub_l1 = TextMobject("Knot Index:")
         sub_l1.set_color(RED)
-        sub_l1.shift(UP * 1.5)
+        sub_l1.shift(UP * 0.80)
         self.play(ApplyMethod(basic_knot.textMobject.set_color_by_tex, str(basic_knot.index), RED))
 
         sub_l2 = TextMobject("Arbitrary index assigned to specific")

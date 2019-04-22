@@ -19,10 +19,13 @@ class KnotExample(KnotScene):
         trefoil_text = TexMobject(r"\text{Knot } 3_1")
         trefoil_text.next_to(trefoil, DOWN)
         """
+
+        # Draw unknot
         self.play(DrawBorderThenFill(unknot))
         self.play(FadeIn(unknot_text))
         """
         self.play(Transform(unknot, trefoil), Transform(unknot_text, trefoil_text))
         """
 
+        # Finish scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
