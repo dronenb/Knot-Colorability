@@ -55,3 +55,4 @@ class KnotNotation(KnotScene):
         self.play(FadeOut(basic_knot), FadeOut(sub_l1), FadeOut(sub_l2), FadeOut(sub_l3), FadeOut(basic_knot.textMobject))
         
         self.play(FadeOut(VGroup(*self.get_mobjects())))
+        self.wait()

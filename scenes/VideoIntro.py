@@ -33,3 +33,4 @@ class VideoIntro(Scene):
         self.play(FadeIn(names['js']), FadeIn(names['gp']), FadeIn(names['bd']))
 
         self.play(FadeOut(VGroup(*self.get_mobjects())))
+        self.wait()
