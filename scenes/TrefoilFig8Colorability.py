@@ -48,6 +48,25 @@ class TrefoilFig8Colorability(KnotScene):
         self.play(FadeIn(neq))
         self.wait()
 
+        # Equal to and question mark
+        eq = TextMobject("=")
+        eq.scale(2)
+        question = TextMobject("?")
+        question.scale(1.2)
+        question.next_to(eq, UP)
+
+        # Switch to trefoil vs fig8
+        fig_8.next_to(unknot, DOWN*0)
+        self.play(Transform(unknot, fig_8))
+
+        # Switch neq to eq + question mark
+        self.play(FadeOut(neq))
+        self.play(FadeIn(eq), FadeIn(question))
+
+        """
+        TODO: Cycle through a few colorations of the fig_8 knot, then deduce they are not equal.
+        """
+
         # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()
