@@ -33,12 +33,15 @@ class TrefoilToFigureEight(KnotScene):
 
         # Draw crossing circles
         trefoil = trefoil.circleCrossingsAndReturnNew(self)
+        # trefoil = trefoil.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, '#ff05d5', '#66ff00'])
         self.play(FadeIn(trefoil_text_2))
 
         # Transform trefoil into fig8
         self.play(Transform(trefoil, fig_8))
         self.play(Transform(trefoil_text, fig_8_text))
         fig_8 = fig_8.circleCrossingsAndReturnNew(self)
+        # fig_8 = fig_8.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, '#ff05d5', '#66ff00'])
         self.play(Transform(trefoil_text_2, fig_8_text_2))
 
         self.play(FadeOut(VGroup(*self.get_mobjects())))
+        self.wait()
