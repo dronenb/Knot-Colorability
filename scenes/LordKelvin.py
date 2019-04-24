@@ -11,7 +11,7 @@ from knot import *
 
 class LordKelvin(Scene):
     def construct(self):
-        name = TextMobject("William \"Lord Kelvin\" Thomson")
+        name = TextMobject("William ``Lord Kelvin\" Thomson")
         name.shift(DOWN * 2.5)
 
         years = TexMobject(r"\textit{1824-1907}")
@@ -21,6 +21,7 @@ class LordKelvin(Scene):
 
         self.play(FadeIn(name))
         self.play(FadeIn(years))
+        self.wait()
 
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()

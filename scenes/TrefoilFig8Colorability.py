@@ -68,9 +68,9 @@ class TrefoilFig8Colorability(KnotScene):
         # Try to color
         temp1 = fig_8.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, RED])
         self.play(FadeOut(temp1), FadeIn(fig_8))
-        temp2 = fig_8.showColoringAndReturnNew(self, [YELLOW, '#057aff', YELLOW, RED])
+        temp2 = fig_8.showColoringAndReturnNew(self, [YELLOW, '#057aff', RED, '#057aff'])
         self.play(FadeOut(temp2), FadeIn(fig_8))
-        temp3 = fig_8.showColoringAndReturnNew(self, ['#057aff', '#057aff', RED, YELLOW])
+        temp3 = fig_8.showColoringAndReturnNew(self, [RED, YELLOW, '#057aff', YELLOW])
         self.play(FadeOut(temp3), FadeIn(fig_8))
 
         # Prevent weird fade outs
