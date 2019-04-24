@@ -75,7 +75,7 @@ class Knot(SVGMobject):
 	# Color the knot
 	def showColoringAndReturnNew(self, scene, colors):
 		# Make sure we have enough colors for the components of this knot
-		if len(self.submobjects) <= len(colors):
+		if len(self.crossings) <= len(colors):
 			print("Not enough colors!")
 			exit()
 		# If so, continue
@@ -105,6 +105,8 @@ class Knot(SVGMobject):
 
 			# Return the new knot
 			return previous_knot
+	def setCrossings (self, num_crossings):
+		self.crossings = num_crossings
 def DrawKnot(knot):
 	animations = []
 	if knot.crossings == 0:
