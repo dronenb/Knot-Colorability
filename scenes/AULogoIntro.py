@@ -4,7 +4,8 @@ import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath( __file__ )), '..'))
 from knot import *
 
-class AULogo(KnotScene):
+# A class that draws the AU logo (making sure to color the flame the proper color, as per my color picker)
+class AULogoIntro(KnotScene):
 	def construct(self):
 		# Open the logo file (not checked into Git for copyright reasons...)
 		au_logo = SVGMobject(os.path.join(os.path.dirname(os.path.abspath( __file__ )), "..", "svg_files", "au_math_logo.svg"))
@@ -17,6 +18,13 @@ class AULogo(KnotScene):
 
 		# Hold on this frame
 		self.wait()
+		title = TextMobject("Introduction to Knots \& Invariants")
 
+		title.scale(1.5)
+
+		# self.play(Transform(au_logo, title))
+		self.play(FadeOut(au_logo))
+		self.play(FadeIn(title))
+		self.wait()
 		self.play(FadeOut(VGroup(*self.get_mobjects())))
 		self.wait()
