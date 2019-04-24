@@ -1,6 +1,9 @@
 """
 Video starting sequence
-AU Logo first?
+
+
+
+UNUSED
 """
 
 import sys

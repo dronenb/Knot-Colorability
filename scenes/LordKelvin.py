@@ -11,7 +11,7 @@ from knot import *
 
 class LordKelvin(Scene):
     def construct(self):
-        name = TextMobject("Lord Kelvin")
+        name = TextMobject("William \"Lord Kelvin\" Thomson")
         name.shift(DOWN * 2.5)
 
         years = TexMobject(r"\textit{1824-1907}")

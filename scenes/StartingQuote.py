@@ -12,7 +12,7 @@ class StartingQuote(Scene):
     def construct(self):
         # Quote:
         quote = TextMobject('``We learn the rope of life by untying its knots."')
-        author = TexMobject(r"-\textit{Jean Toomer}")
+        author = TexMobject(r"\textit{-Jean Toomer}")
 
         author.next_to(quote, DOWN)
         author.shift(RIGHT * 4)

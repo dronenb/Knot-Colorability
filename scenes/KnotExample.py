@@ -29,5 +29,4 @@ class KnotExample(KnotScene):
 
         # Finish scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
-
         self.wait()
