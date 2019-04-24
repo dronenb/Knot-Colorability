@@ -53,6 +53,14 @@ class CulpritKnot(KnotScene):
 
         self.wait()
 
+        """
+        TODO:
+        Fade out all but 1st and unknot
+        Move them next to eachother and fade in an equal sign
+        """
+
+        
+
 
 class Culprit(SVGMobject):
     def __init__(self, mode, **kwargs):
