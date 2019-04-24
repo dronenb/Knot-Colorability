@@ -38,7 +38,7 @@ class TrefoilFig8Colorability(KnotScene):
 
         # Color knots
         _ = trefoil.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, '#ff05d5', '#66ff00'])
-
+        self.wait()
         self.play(ApplyMethod(unknot.submobjects[0].set_fill, RED))
         self.play(ApplyMethod(unknot.submobjects[0].set_fill, WHITE))
 
@@ -63,9 +63,23 @@ class TrefoilFig8Colorability(KnotScene):
         self.play(FadeOut(neq))
         self.play(FadeIn(eq), FadeIn(question))
 
-        """
-        TODO: Cycle through a few colorations of the fig_8 knot, then deduce they are not equal.
-        """
+        self.wait()
+
+        # Try to color
+        temp1 = fig_8.showColoringAndReturnNew(self, [RED, '#057aff', YELLOW, RED])
+        self.play(FadeOut(temp1), FadeIn(fig_8))
+        temp2 = fig_8.showColoringAndReturnNew(self, [YELLOW, '#057aff', YELLOW, RED])
+        self.play(FadeOut(temp2), FadeIn(fig_8))
+        temp3 = fig_8.showColoringAndReturnNew(self, ['#057aff', '#057aff', RED, YELLOW])
+        self.play(FadeOut(temp3), FadeIn(fig_8))
+
+        # Prevent weird fade outs
+        self.remove(temp1)
+        self.remove(temp2)
+        self.remove(temp3)
+
+        # Show they are not equal
+        self.play(FadeOut(question), Transform(eq, neq))
 
         # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
