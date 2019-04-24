@@ -6,11 +6,19 @@ import sys
 
 # List of scenes
 scenes = [
-	# 'KnotTable',
 	# 'AULogo',
+	# 'CulpritKnot',
 	# 'KnotColorExample',
 	# 'KnotCrossingsExample',
-	'KnotNotation',
+	# 'KnotExample',
+	# 'KnotNotation',
+	# 'KnotTable',
+	# 'LordKelvin',
+	"ReidemeisterMoves",
+	# "StartingQuote"
+	# 'TrefoilFig8Colorability',
+	# 'TrefoilToFigureEight',
+	# 'VideoIntro',
 ]
 
 # Find the current path, then combine that with the manim folder and the manim.py executable
