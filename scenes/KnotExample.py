@@ -10,7 +10,7 @@ from knot import *
 class KnotExample(KnotScene):
     def construct(self):
         # Load knots
-        unknot = Circle(color=WHITE, radius=2, stroke=10) # Does sroke do anything?
+        unknot = Circle(color=WHITE, radius=2, stroke=10) # Does stroke do anything?
         unknot_text = TextMobject("Unknot")
         unknot_text.next_to(unknot, DOWN)
 
