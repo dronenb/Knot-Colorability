@@ -79,7 +79,7 @@ class Knot(SVGMobject):
 	# Color the knot
 	def showColoringAndReturnNew(self, scene, colors):
 		# Make sure we have enough colors for the components of this knot
-		if self.crossings <= len(colors):
+		if self.crossings >= len(colors):
 			print("Not enough colors!")
 			exit()
 		# If so, continue
