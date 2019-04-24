@@ -49,7 +49,7 @@ class Knot(SVGMobject):
 		for i in range(0, self.crossings):
 			self.submobjects[self.crossings + i].set_stroke(width=0)
 			self.submobjects[self.crossings + i].set_fill(opacity=0)
-		if (len(self.submobjects) > self.crossings * 2):
+		if (len(self.submobjects) > self.crossings * 2 and self.crossings != 0):
 			for i in range(self.crossings * 2, len(self.submobjects)):
 				self.submobjects[i].set_stroke(width=0)
 				self.submobjects[i].set_fill(opacity=0)
@@ -79,7 +79,7 @@ class Knot(SVGMobject):
 	# Color the knot
 	def showColoringAndReturnNew(self, scene, colors):
 		# Make sure we have enough colors for the components of this knot
-		if self.crossings <= len(colors):
+		if self.crossings > len(colors):
 			print("Not enough colors!")
 			exit()
 		# If so, continue
