@@ -6,15 +6,15 @@ from knot import *
 class Tricolorability(Scene):
 
     def construct(self):
-        invariant = TextMobject("Tricolorability Invariant")
-        invariant.set_color(BLUE)
+        invariant = TextMobject("Tricolorability")
+        # invariant.set_color(BLUE)
         invariant.scale(1.5)
         invariant.to_edge(UP*0.5)
 
         rule_1 = TextMobject("1. At least two colors")
         rule_2 = TextMobject("2. Incident crossing strands are either:")
-        cont_1 = TextMobject("\tAll the same color")
-        cont_2 = TextMobject("\tAll different colors")
+        cont_1 = TextMobject("All the same color")
+        cont_2 = TextMobject("All different colors")
 
         rule_1.shift(UP * 1)
         rule_2.next_to(rule_1, DOWN)

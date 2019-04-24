@@ -15,7 +15,7 @@ class LordKelvin(Scene):
         name.shift(DOWN * 2.5)
 
         years = TexMobject(r"\textit{1824-1907}")
-        years.scale(0.5)
+        years.scale(0.65)
         years.next_to(name, DOWN)
         # years.shift(RIGHT * 2)
 

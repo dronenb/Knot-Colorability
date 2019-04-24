@@ -23,6 +23,7 @@ class KnotExample(KnotScene):
         # Draw unknot
         self.play(DrawBorderThenFill(unknot))
         self.play(FadeIn(unknot_text))
+        self.wait()
         """
         self.play(Transform(unknot, trefoil), Transform(unknot_text, trefoil_text))
         """
