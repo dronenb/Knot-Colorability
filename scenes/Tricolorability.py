@@ -32,6 +32,7 @@ class Tricolorability(Scene):
         self.wait()
         self.play(FadeIn(cont_2))
 
+        self.wait()
 
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()

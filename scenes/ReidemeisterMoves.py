@@ -76,3 +76,9 @@ class ReidemeisterMoves(KnotScene):
 		move_3_after = ReidemeisterSVG(number="3", mode="after")
 		move_3_after.shift(RIGHT * 5.3 + LEFT * 2 + DOWN + RIGHT * 2)
 		self.play(Transform(move_3_before_copy, move_3_after))
+
+		self.wait()
+
+		# Fade scene out
+		self.play(FadeOut(VGroup(*self.get_mobjects())))
+		self.wait()

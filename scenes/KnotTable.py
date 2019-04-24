@@ -114,6 +114,7 @@ class KnotTable(KnotScene):
 
 		# Fade the titles for all of the knots in all at once
 		self.play(*[FadeIn(knot.textMobject) for knot in knots])
+		self.wait()
 
 		# Fade scene out
 		self.play(FadeOut(VGroup(*self.get_mobjects())))

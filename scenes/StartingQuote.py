@@ -19,6 +19,7 @@ class StartingQuote(Scene):
 
         self.play(FadeIn(quote))
         self.play(FadeIn(author))
+        self.wait()
 
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()
