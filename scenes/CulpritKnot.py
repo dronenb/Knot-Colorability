@@ -49,32 +49,28 @@ class CulpritKnot(KnotScene):
             # self.remove(culprits[i])
             #culprits[i] = new_culprit
             self.wait()
-        """
-        TODO:
-        Fade out all but 1st and unknot
-        Move them next to eachother and fade in an equal sign
-        """
 
-        # self.play(FadeOut(VGroup(*self.get_mobjects())), FadeIn(culprits[0]))
 
-        # nothing = TextMobject(" ")
-        # self.play(Transform(culprits[4], nothing))
+        # Fade out all culprits except first and last
         self.play(FadeOut(culprits[1]), FadeOut(culprits[2]), FadeOut(culprits[3]), 
         FadeOut(culprits[4]), FadeOut(culprits[5]), FadeOut(culprits[6]), 
         FadeOut(culprits[7]), FadeOut(culprits[8]))
         # print(len(culprits)) #  = 10
         self.wait()
 
+        # Move to same row
         self.play(ApplyMethod(culprits[0].shift, DOWN * 1 + RIGHT * 2.5))
         self.play(ApplyMethod(culprits[9].shift, UP * 2 + LEFT * 2.5))
 
         eq = TextMobject("=")
         eq.scale(2)
 
+        # Draw equal sign
         self.play(FadeIn(eq))
 
         self.wait()
 
+        # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()
 
