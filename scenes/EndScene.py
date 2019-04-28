@@ -6,8 +6,8 @@ from knot import *
 class EndScene(Scene):
     def construct(self):
         title = TextMobject("Invariants to Look Into")
-        title.to_edge(UP)
         title.scale(1.5)
+        title.to_edge(UP)
 
         inv1 = TextMobject("invarient1")
         inv2 = TextMobject("invarient2")

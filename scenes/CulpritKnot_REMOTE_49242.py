@@ -68,15 +68,11 @@ class CulpritKnot(KnotScene):
         # Draw equal sign
         self.play(FadeIn(eq))
 
-<<<<<<< HEAD
-
-=======
         self.wait()
 
         # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()
->>>>>>> a84ff0a8a9241e3f917f496e0f029979d9c27c56
 
 
 class Culprit(SVGMobject):

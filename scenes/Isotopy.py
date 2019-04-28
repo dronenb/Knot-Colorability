@@ -17,6 +17,8 @@ class Isotopy(Scene):
         def_2.next_to(def_1, DOWN)
 
         self.play(FadeIn(isotopy))
+        self.wait()
+
         self.play(FadeIn(def_1), FadeIn(def_2))
 
         self.wait()

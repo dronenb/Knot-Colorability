@@ -82,6 +82,8 @@ class TrefoilFig8Colorability(KnotScene):
         # Show they are not equal
         self.play(FadeOut(question), Transform(eq, neq))
 
+        self.wait()
+
         # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()

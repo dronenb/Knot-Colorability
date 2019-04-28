@@ -26,14 +26,14 @@ class CulpritKnot(KnotScene):
             new_culprit.move_to(UP + LEFT * 5 + RIGHT * i * 2.5)
             self.play(Transform(culprits[i], new_culprit))
             # self.remove(culprits[i])
-            #culprits[i] = new_culprit
+            culprits[i] = new_culprit
             self.wait()
         culprits.append(copy.deepcopy(culprits[4]))
         self.play(ApplyMethod(culprits[5].move_to, DOWN * 2 + LEFT * 5))
         culprit6 = Culprit(6)
         culprit6.move_to(DOWN * 2 + LEFT * 5)
         self.play(Transform(culprits[5], culprit6))
-        # culprits[5] = culprit6
+        culprits[5] = culprit6
         self.wait()
         for i in range(6, 10):
             culprits.append(copy.deepcopy(culprits[i-1]))
@@ -47,36 +47,20 @@ class CulpritKnot(KnotScene):
             new_culprit.move_to(DOWN * 2 + LEFT * 5 + RIGHT * (i-5) * 2.5)
             self.play(Transform(culprits[i], new_culprit))
             # self.remove(culprits[i])
-            #culprits[i] = new_culprit
+            culprits[i] = new_culprit
             self.wait()
-
-
-        # Fade out all culprits except first and last
-        self.play(FadeOut(culprits[1]), FadeOut(culprits[2]), FadeOut(culprits[3]), 
-        FadeOut(culprits[4]), FadeOut(culprits[5]), FadeOut(culprits[6]), 
-        FadeOut(culprits[7]), FadeOut(culprits[8]))
-        # print(len(culprits)) #  = 10
-        self.wait()
-
-        # Move to same row
-        self.play(ApplyMethod(culprits[0].shift, DOWN * 1 + RIGHT * 2.5))
-        self.play(ApplyMethod(culprits[9].shift, UP * 2 + LEFT * 2.5))
-
-        eq = TextMobject("=")
-        eq.scale(2)
-
-        # Draw equal sign
-        self.play(FadeIn(eq))
-
-<<<<<<< HEAD
-
-=======
-        self.wait()
-
-        # End scene
+        # Finish scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
+
         self.wait()
->>>>>>> a84ff0a8a9241e3f917f496e0f029979d9c27c56
+
+        """
+        TODO:
+        Fade out all but 1st and unknot
+        Move them next to eachother and fade in an equal sign
+        """
+
+
 
 
 class Culprit(SVGMobject):
