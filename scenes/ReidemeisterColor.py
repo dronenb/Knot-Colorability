@@ -24,7 +24,6 @@ class ReidemeisterColor(KnotScene):
 		title = TextMobject("Reidemeister Moves")
 		title.scale(1.5)
 		title.to_edge(UP)
-		title.scale(1.5)
 		self.play(FadeIn(title))
 
 		# Define the first reidemeister move objects

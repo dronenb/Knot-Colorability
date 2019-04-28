@@ -15,7 +15,6 @@ class KnotNotation(KnotScene):
         scene_title = TextMobject("Knot Notation")
         scene_title.scale(1.5)
         scene_title.to_edge(UP)
-        scene_title.scale(1.5)
 
         # Initialize scene
         self.play(FadeIn(scene_title))
@@ -57,12 +56,12 @@ class KnotNotation(KnotScene):
         self.play(FadeIn(sub_l1))
         self.wait()
         self.play(FadeIn(sub_l2), FadeIn(sub_l3))
-<<<<<<< HEAD
+
         self.play(FadeOut(basic_knot), FadeOut(sub_l1), FadeOut(sub_l2), FadeOut(sub_l3), FadeOut(basic_knot.textMobject))
 
-=======
+
         self.wait()
-        
->>>>>>> a84ff0a8a9241e3f917f496e0f029979d9c27c56
+
+
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()

@@ -52,8 +52,8 @@ class CulpritKnot(KnotScene):
 
 
         # Fade out all culprits except first and last
-        self.play(FadeOut(culprits[1]), FadeOut(culprits[2]), FadeOut(culprits[3]), 
-        FadeOut(culprits[4]), FadeOut(culprits[5]), FadeOut(culprits[6]), 
+        self.play(FadeOut(culprits[1]), FadeOut(culprits[2]), FadeOut(culprits[3]),
+        FadeOut(culprits[4]), FadeOut(culprits[5]), FadeOut(culprits[6]),
         FadeOut(culprits[7]), FadeOut(culprits[8]))
         # print(len(culprits)) #  = 10
         self.wait()
@@ -68,15 +68,13 @@ class CulpritKnot(KnotScene):
         # Draw equal sign
         self.play(FadeIn(eq))
 
-<<<<<<< HEAD
 
-=======
         self.wait()
 
         # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()
->>>>>>> a84ff0a8a9241e3f917f496e0f029979d9c27c56
+
 
 
 class Culprit(SVGMobject):
