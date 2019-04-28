@@ -22,6 +22,7 @@ class ReidemeisterSVG(SVGMobject):
 class ReidemeisterColor(KnotScene):
 	def construct (self):
 		title = TextMobject("Reidemeister Moves")
+		title.scale(1.5)
 		title.to_edge(UP)
 		self.play(FadeIn(title))
 
