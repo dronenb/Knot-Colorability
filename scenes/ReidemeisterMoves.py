@@ -34,6 +34,7 @@ class ReidemeisterMoves(KnotScene):
 	def construct(self):
 		title = TextMobject("Reidemeister Moves")
 		title.to_edge(UP)
+		title.scale(1.5)
 		self.play(FadeIn(title))
 		move_1_text = TextMobject('Move 1: ``Twist"')
 		move_1_text.shift(LEFT * 4.2 + UP * 1.5)

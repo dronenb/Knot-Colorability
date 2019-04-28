@@ -8,6 +8,7 @@ from knot import *
 class CulpritKnot(KnotScene):
     def construct(self):
         title = TextMobject("Differentiating Knots")
+        title.scale(1.5)
         title.to_edge(UP)
 
         self.play(FadeIn(title))
@@ -59,7 +60,7 @@ class CulpritKnot(KnotScene):
         Move them next to eachother and fade in an equal sign
         """
 
-        
+
 
 
 class Culprit(SVGMobject):

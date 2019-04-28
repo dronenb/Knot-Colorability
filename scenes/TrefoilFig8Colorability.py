@@ -27,6 +27,7 @@ class TrefoilFig8Colorability(KnotScene):
         # Draw title
         title = TextMobject("Differentiating Knots")
         title.to_edge(UP)
+        title.scale(1.5)
         self.play(FadeIn(title))
 
         # Draw unknot & trefoil -> compare

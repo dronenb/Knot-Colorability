@@ -13,9 +13,9 @@ scenes = [
 	# 'KnotExample',
 	# 'KnotNotation',
 	# 'KnotTable',
-	# 'Fig8Determinant',
+	'Fig8Determinant',
 	# 'LordKelvin',
-	"ReidemeisterMoves",
+	# "ReidemeisterMoves",
 	# "ReidemeisterColor",
 	# "StartingQuote"
 	# 'TrefoilFig8Colorability',

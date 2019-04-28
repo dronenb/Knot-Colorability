@@ -2,10 +2,7 @@
 <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1024 768" style="enable-background:new 0 0 1024 768;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-width:17;stroke-miterlimit:10;}
-</style>
-<line class="st0" x1="99" y1="384" x2="925" y2="384"/>
-<line class="st0" x1="511.5" y1="18.5" x2="511.5" y2="344.5"/>
-<line class="st0" x1="511.5" y1="429" x2="511.5" y2="755"/>
+<rect x="99" y="375.5" width="826" height="17"/>
+<rect x="503" y="18.5" width="17" height="326"/>
+<rect x="503" y="429" width="17" height="326"/>
 </svg>

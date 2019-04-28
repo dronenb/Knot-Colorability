@@ -9,6 +9,7 @@ class KnotTable(KnotScene):
 	def construct(self):
 		# Create a title text
 		title_text = TextMobject("Some Standard Knots")
+		title_text.scale(1.5)
 
 		# Align the text to the top
 		title_text.to_edge(UP)
