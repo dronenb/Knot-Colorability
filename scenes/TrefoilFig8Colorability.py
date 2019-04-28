@@ -27,6 +27,7 @@ class TrefoilFig8Colorability(KnotScene):
         # Draw title
         title = TextMobject("Differentiating Knots")
         title.to_edge(UP)
+        title.scale(1.5)
         self.play(FadeIn(title))
 
         # Draw unknot & trefoil -> compare
@@ -80,6 +81,8 @@ class TrefoilFig8Colorability(KnotScene):
 
         # Show they are not equal
         self.play(FadeOut(question), Transform(eq, neq))
+
+        self.wait()
 
         # End scene
         self.play(FadeOut(VGroup(*self.get_mobjects())))

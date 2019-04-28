@@ -13,6 +13,7 @@ class KnotNotation(KnotScene):
         # Create knot object w/ scene title
         basic_knot = Knot("3_1")
         scene_title = TextMobject("Knot Notation")
+        scene_title.scale(1.5)
         scene_title.to_edge(UP)
 
         # Initialize scene
@@ -35,7 +36,9 @@ class KnotNotation(KnotScene):
 
         # Draw Crossing Number text
         self.play(FadeIn(sup_l1))
+        self.wait()
         self.play(FadeIn(sup_l2), FadeIn(sup_l3))
+        self.wait()
         self.play(FadeOut(sup_l1), FadeOut(sup_l2), FadeOut(sup_l3))
 
         # subscript explanation
@@ -51,8 +54,9 @@ class KnotNotation(KnotScene):
 
         # Draw index definition
         self.play(FadeIn(sub_l1))
+        self.wait()
         self.play(FadeIn(sub_l2), FadeIn(sub_l3))
-        self.play(FadeOut(basic_knot), FadeOut(sub_l1), FadeOut(sub_l2), FadeOut(sub_l3), FadeOut(basic_knot.textMobject))
+        self.wait()
         
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()

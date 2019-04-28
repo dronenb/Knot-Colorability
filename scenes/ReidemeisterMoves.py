@@ -33,6 +33,7 @@ class ReidemeisterSVG(SVGMobject):
 class ReidemeisterMoves(KnotScene):
 	def construct(self):
 		title = TextMobject("Reidemeister Moves")
+		title.scale(1.5)
 		title.to_edge(UP)
 		self.play(FadeIn(title))
 		move_1_text = TextMobject('Move 1: ``Twist"')
