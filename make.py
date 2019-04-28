@@ -13,8 +13,10 @@ scenes = [
 	# 'KnotExample',
 	# 'KnotNotation',
 	# 'KnotTable',
+	# 'Fig8Determinant',
 	# 'LordKelvin',
 	"ReidemeisterMoves",
+	# "ReidemeisterColor",
 	# "StartingQuote"
 	# 'TrefoilFig8Colorability',
 	# 'TrefoilToFigureEight',
