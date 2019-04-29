@@ -23,7 +23,7 @@ class TrefoilToFigureEight(KnotScene):
         fig_8_text_2.next_to(fig_8_text, DOWN)
 
         # Draw title
-        title = TextMobject("Differentiating Knots")
+        title = TextMobject("Distinguishing Knots")
         title.to_edge(UP)
         title.scale(1.5)
         self.play(FadeIn(title))

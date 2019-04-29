@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 from knot import *
 
-class Tricolorability(Scene):
+class Tricolorability(KnotScene):
 
     def construct(self):
         invariant = TextMobject("Tricolorability")

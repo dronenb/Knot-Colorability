@@ -9,6 +9,51 @@ from knot import *
 
 class TrefoilFig8Colorability(KnotScene):
     def construct(self):
+        invariant = TextMobject("Tricolorability")
+        # invariant.set_color(BLUE)
+        invariant.scale(1.5)
+        invariant.to_edge(UP*0.5)
+
+        rule_1 = TextMobject("1. At least two colors must be used")
+        rule_2 = TextMobject("2. Incident crossing strands are either:")
+        cont_1 = TextMobject("All the same color")
+        cont_2 = TextMobject("All different colors")
+
+        rule_1.shift(UP * 1)
+        rule_2.next_to(rule_1, DOWN)
+        rule_2.shift(DOWN * 1)
+        cont_1.next_to(rule_2, DOWN)
+        cont_2.next_to(cont_1, DOWN)
+
+        self.play(FadeIn(invariant))
+        self.wait()
+        self.play(FadeIn(rule_1))
+        self.wait()
+        self.play(FadeIn(rule_2))
+        self.wait()
+        self.play(FadeIn(cont_1))
+        self.wait()
+        self.play(FadeIn(cont_2))
+
+        self.wait()
+
+        # Draw title
+        title = TextMobject("Distinguishing Knots")
+        title.to_edge(UP)
+        title.scale(1.5)
+        self.play(Transform(invariant, title))
+        self.play(
+            ApplyMethod(rule_1.scale, .6),
+            ApplyMethod(rule_2.scale, .6),
+            ApplyMethod(cont_1.scale, .6),
+            ApplyMethod(cont_2.scale, .6),
+        )
+        self.play(
+            ApplyMethod(rule_1.shift, DOWN * 3),
+            ApplyMethod(rule_2.shift, DOWN * 2),
+            ApplyMethod(cont_1.shift, DOWN * 1.7),
+            ApplyMethod(cont_2.shift, DOWN * 1.5),
+        )
         # Load knots
         unknot = Knot("Unknot")
 
@@ -23,12 +68,6 @@ class TrefoilFig8Colorability(KnotScene):
         fig_8_text_2 = TextMobject("Crossing Number: 4")
         fig_8_text.next_to(trefoil, DOWN)
         fig_8_text_2.next_to(fig_8_text, DOWN)
-
-        # Draw title
-        title = TextMobject("Differentiating Knots")
-        title.to_edge(UP)
-        title.scale(1.5)
-        self.play(FadeIn(title))
 
         # Draw unknot & trefoil -> compare
         unknot.move_to(LEFT * 2)

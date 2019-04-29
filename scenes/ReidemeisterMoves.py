@@ -80,6 +80,11 @@ class ReidemeisterMoves(KnotScene):
 
 		self.wait()
 
+		ambient_text = TextMobject(r"""Reidemeister Moves  $\Longleftrightarrow$  Ambient Isotopy""")
+		ambient_text.shift(DOWN * 3)
+		self.play(FadeIn(ambient_text))
+		self.wait()
+
 		# Fade scene out
 		self.play(FadeOut(VGroup(*self.get_mobjects())))
 		self.wait()
