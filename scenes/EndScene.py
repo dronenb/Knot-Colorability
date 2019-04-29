@@ -5,14 +5,15 @@ from knot import *
 
 class EndScene(Scene):
     def construct(self):
-        title = TextMobject("Invariants to Investigate")
+        title = TextMobject("Topics to Investigate")
         title.scale(1.5)
         title.to_edge(UP)
 
         inv1 = TextMobject("Alexander Polynomial")
-        inv2 = TextMobject("invarient2")
-        inv3 = TextMobject("invarient3")
-        inv4 = TextMobject("invarient4")
+        inv2 = TextMobject("topic2")
+        inv3 = TextMobject("topic3")
+        inv4 = TextMobject("topic4")
+        more = TextMobject("...and so much more")
 
         self.play(FadeIn(title))
 
@@ -27,6 +28,9 @@ class EndScene(Scene):
 
         self.play(FadeIn(inv4))
         self.play(ApplyMethod(inv4.shift, RIGHT * 3 + DOWN * 1.0))
+
+        self.play(FadeIn(more))
+        self.play(ApplyMethod(more.shift, DOWN * 2.5))
 
         self.wait()
         self.play(FadeOut(VGroup(*self.get_mobjects())))
