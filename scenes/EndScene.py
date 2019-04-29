@@ -10,9 +10,9 @@ class EndScene(Scene):
         title.to_edge(UP)
 
         inv1 = TextMobject("Alexander Polynomial")
-        inv2 = TextMobject("topic2")
-        inv3 = TextMobject("topic3")
-        inv4 = TextMobject("topic4")
+        inv2 = TextMobject("Surfaces and Genus")
+        inv3 = TextMobject("Braids")
+        inv4 = TextMobject("Linking Number")
         more = TextMobject("...and so much more")
 
         self.play(FadeIn(title))
