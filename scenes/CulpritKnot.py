@@ -7,7 +7,7 @@ from knot import *
 
 class CulpritKnot(KnotScene):
     def construct(self):
-        title = TextMobject("Differentiating Knots")
+        title = TextMobject("The Culprit Knot")
         title.scale(1.5)
         title.to_edge(UP)
 

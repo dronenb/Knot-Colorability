@@ -110,11 +110,20 @@ class KnotTable(KnotScene):
 		# Add the knot to the array
 		knots.append(k_7_2)
 
+		tref = TextMobject("Trefoil")
+		tref.next_to(k_3_1, DOWN)
+		fig8 = TextMobject("Figure Eight")
+		fig8.next_to(k_4_1, DOWN)
+		fig8.shift(RIGHT * 0.1)
+
 		# Draw the borders for all of the knots all at once
 		self.play(*[animation for knot in knots for animation in DrawKnot(knot)])
 
 		# Fade the titles for all of the knots in all at once
 		self.play(*[FadeIn(knot.textMobject) for knot in knots])
+		self.wait()
+
+		self.play(Transform(k_3_1.textMobject, tref), Transform(k_4_1.textMobject, fig8))
 		self.wait()
 
 		# Fade scene out

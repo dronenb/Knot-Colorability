@@ -105,5 +105,6 @@ class Fig8Determinant(KnotScene):
 		equals5.shift(RIGHT * 5)
 		self.play(FadeIn(equals5))
 		self.wait()
+
 		self.play(FadeOut(VGroup(*self.get_mobjects())))
 		self.wait()

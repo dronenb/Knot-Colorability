@@ -5,11 +5,11 @@ from knot import *
 
 class EndScene(Scene):
     def construct(self):
-        title = TextMobject("Invariants to Look Into")
+        title = TextMobject("Invariants to Investigate")
         title.scale(1.5)
         title.to_edge(UP)
 
-        inv1 = TextMobject("invarient1")
+        inv1 = TextMobject("Alexander Polynomial")
         inv2 = TextMobject("invarient2")
         inv3 = TextMobject("invarient3")
         inv4 = TextMobject("invarient4")
