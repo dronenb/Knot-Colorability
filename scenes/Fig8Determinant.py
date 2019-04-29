@@ -71,6 +71,42 @@ class Fig8Determinant(KnotScene):
 		# matrix.submobjects[1].set_color(RED)
 		self.play(*[DrawBorderThenFill(matrix.submobjects[i]) for i in range(0, 8)])
 
+		# Create rules of calculating knot Determinant
+		rules_title = TexMobject(
+			r"""\text{For Each }""",
+			r"""\text{Crossing}""",
+			r"""\text{:}"""
+		)
+		rules_title.set_color_by_tex("Crossing", RED)
+		rules_title.scale(.5)
+		rules_title.shift(DOWN * 2)
+		rules_line_1 = TexMobject(
+			r"""\text{1. Put 2 in column corresponding to }""",
+			r"""\text{overcrossing component}""",
+		)
+		rules_line_1.set_color_by_tex("component", BLUE)
+		rules_line_1.scale(.5)
+		rules_line_1.shift(DOWN * 2.5)
+		rules_line_2 = TexMobject(
+			r"""\text{2. Put -1 in columns corresponding to }""",
+			r"""\text{undercrossing components}""",
+		)
+		rules_line_2.set_color_by_tex("components", BLUE)
+		rules_line_2.shift(DOWN * 3)
+		rules_line_2.scale(.5)
+		rules_line_3 = TexMobject(
+			r"""\text{3. Put 0 in columns corresponding to }""",
+			r"""\text{components}""",
+			r"""\text{ not involved in }""",
+			r"""\text{crossing}""",
+		)
+		rules_line_3.set_color_by_tex("components", BLUE)
+		rules_line_3.set_color_by_tex("crossing", RED)
+		rules_line_3.scale(.5)
+		rules_line_3.shift(DOWN * 3.5	)
+		self.play(FadeIn(rules_title), FadeIn(rules_line_1), FadeIn(rules_line_2), FadeIn(rules_line_3))
+		self.wait()
+
 		last_index = 9
 		for i in range(1, 4 + 1):
 			colored_crossing = fig8.submobjects[16 - 1 + i]
