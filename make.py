@@ -22,7 +22,6 @@ scenes = [
 	'ReidemeisterMoves',
 	# 'StartingQuote',
 	'TrefoilFig8Colorability',
-	# 'TextTest',
 	'TrefoilToFigureEight',
 	# 'Tricolorability',
 	# 'VideoIntro',
