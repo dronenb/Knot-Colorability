@@ -27,14 +27,14 @@ class CulpritKnot(KnotScene):
             self.play(Transform(culprits[i], new_culprit))
             # self.remove(culprits[i])
             #culprits[i] = new_culprit
-            self.wait()
+            # self.wait()
         culprits.append(copy.deepcopy(culprits[4]))
         self.play(ApplyMethod(culprits[5].move_to, DOWN * 2 + LEFT * 5))
         culprit6 = Culprit(6)
         culprit6.move_to(DOWN * 2 + LEFT * 5)
         self.play(Transform(culprits[5], culprit6))
         # culprits[5] = culprit6
-        self.wait()
+        # self.wait()
         for i in range(6, 10):
             culprits.append(copy.deepcopy(culprits[i-1]))
             self.add(culprits[i])
@@ -48,7 +48,7 @@ class CulpritKnot(KnotScene):
             self.play(Transform(culprits[i], new_culprit))
             # self.remove(culprits[i])
             #culprits[i] = new_culprit
-            self.wait()
+            # self.wait()
 
 
         # Fade out all culprits except first and last

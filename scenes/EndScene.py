@@ -51,8 +51,6 @@ class EndScene(Scene):
         # Hold on this frame
         self.wait()
 
-
-
         self.wait()
         self.play(FadeOut(VGroup(*self.get_mobjects())))
         self.wait()
