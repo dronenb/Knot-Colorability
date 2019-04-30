@@ -10,9 +10,13 @@ from knot import *
 class TrefoilFig8Colorability(KnotScene):
     def construct(self):
         invariant = TextMobject("Tricolorability")
-        # invariant.set_color(BLUE)
+        invariant.to_edge(UP)
         invariant.scale(1.5)
-        invariant.to_edge(UP*0.5)
+
+        defn = TextMobject("A knot's ability to be colored")
+        defn2 = TextMobject("with three different colors")
+        defn2.next_to(defn, DOWN)
+        dgroup = VGroup(defn, defn2)
 
         rule_1 = TextMobject("1. At least two colors must be used")
         rule_2 = TextMobject("2. Incident crossing strands are either:")
@@ -25,8 +29,19 @@ class TrefoilFig8Colorability(KnotScene):
         cont_1.next_to(rule_2, DOWN)
         cont_2.next_to(cont_1, DOWN)
 
+        temp = VGroup(rule_1, rule_2, cont_1, cont_2)
+        temp.scale(0.75)
+        temp.shift(DOWN * 1)
+
+        # Title
         self.play(FadeIn(invariant))
         self.wait()
+
+        # Definition
+        self.play(FadeIn(dgroup))
+        self.wait()
+        self.play(ApplyMethod(dgroup.shift, UP * 1.75))
+
         self.play(FadeIn(rule_1))
         self.wait()
         self.play(FadeIn(rule_2))
@@ -34,6 +49,10 @@ class TrefoilFig8Colorability(KnotScene):
         self.play(FadeIn(cont_1))
         self.wait()
         self.play(FadeIn(cont_2))
+
+        # Undo the temporary changes ---- moved this to later
+        # temp.shift(UP * 1)
+        # temp.scale(1.30)
 
         self.wait()
 
@@ -43,17 +62,20 @@ class TrefoilFig8Colorability(KnotScene):
         title.scale(1.5)
         self.play(Transform(invariant, title))
         self.play(
-            ApplyMethod(rule_1.scale, .6),
-            ApplyMethod(rule_2.scale, .6),
-            ApplyMethod(cont_1.scale, .6),
-            ApplyMethod(cont_2.scale, .6),
+            FadeOut(dgroup),
+            ApplyMethod(rule_1.scale, .85),
+            ApplyMethod(rule_2.scale, .85),
+            ApplyMethod(cont_1.scale, .85),
+            ApplyMethod(cont_2.scale, .85),
         )
         self.play(
-            ApplyMethod(rule_1.shift, DOWN * 3),
-            ApplyMethod(rule_2.shift, DOWN * 2),
-            ApplyMethod(cont_1.shift, DOWN * 1.7),
-            ApplyMethod(cont_2.shift, DOWN * 1.5),
+            ApplyMethod(rule_1.shift, DOWN * (3 - 1.3)),
+            ApplyMethod(rule_2.shift, DOWN * (2 - 1)),
+            ApplyMethod(cont_1.shift, DOWN * (1.7 - 0.8)),
+            ApplyMethod(cont_2.shift, DOWN * (1.5 - 0.7)),
         )
+        # self.wait()
+        # return
         # Load knots
         unknot = Knot("Unknot")
 

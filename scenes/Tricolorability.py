@@ -11,19 +11,35 @@ class Tricolorability(KnotScene):
         invariant.scale(1.5)
         invariant.to_edge(UP*0.5)
 
-        rule_1 = TextMobject("1. At least two colors")
-        rule_2 = TextMobject("2. Incident crossing strands are either:")
+        defn = TextMobject("A knot's ability to be colored")
+        defn2 = TextMobject("with three different colors")
+        defn2.next_to(defn, DOWN)
+        dgroup = VGroup(defn, defn2)
+
+        rule_1 = TextMobject("1. Using at least two colors")
+        rule_2 = TextMobject("2. Where incident crossing strands are either:")
         cont_1 = TextMobject("All the same color")
         cont_2 = TextMobject("All different colors")
 
-        rule_1.shift(UP * 1)
+        VGroup(rule_1, rule_2, cont_1, cont_2).scale(0.75)
+
+        rule_1.shift(DOWN * 0)
         rule_2.next_to(rule_1, DOWN)
-        rule_2.shift(DOWN * 1)
+        rule_2.shift(DOWN * 0.5)
         cont_1.next_to(rule_2, DOWN)
         cont_2.next_to(cont_1, DOWN)
 
+        # Fade in title
         self.play(FadeIn(invariant))
         self.wait()
+
+        # Definition
+        self.play(FadeIn(dgroup))
+        self.wait()
+        # self.play(FadeOut(dgroup))
+        self.play(ApplyMethod(dgroup.shift, UP * 1.75))
+
+        # Rules
         self.play(FadeIn(rule_1))
         self.wait()
         self.play(FadeIn(rule_2))
